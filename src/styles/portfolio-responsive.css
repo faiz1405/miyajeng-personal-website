@@ -1,0 +1,476 @@
+/**
+ * Tablet / mobile layouts aligned with Paper artboards (768px & 390px widths).
+ * Breakpoints: tablet max 900px, mobile max 480px.
+ * Uses !important where needed to override base utility sizes at breakpoints.
+ */
+
+.portfolio-page {
+  box-sizing: border-box;
+}
+
+@media (max-width: 900px) {
+  .portfolio-page {
+    padding-inline: 32px !important;
+    padding-block: 40px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .portfolio-page {
+    padding-inline: 20px !important;
+    padding-block: 24px !important;
+  }
+}
+
+/* ——— Home ——— */
+.portfolio-page--home .home-hero-block {
+  max-width: 100%;
+}
+
+@media (max-width: 900px) {
+  .portfolio-page--home .home-hero-block {
+    padding-top: 32px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .portfolio-page--home .home-hero-block {
+    padding-top: 20px !important;
+  }
+}
+
+.portfolio-page--home .home-display {
+  font-size: 108px !important;
+  line-height: 102px !important;
+}
+
+@media (max-width: 900px) {
+  .portfolio-page--home .home-display {
+    font-size: 56px !important;
+    line-height: 58px !important;
+    max-width: 100% !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .portfolio-page--home .home-display {
+    font-size: 36px !important;
+    line-height: 40px !important;
+  }
+}
+
+@media (max-width: 900px) {
+  .portfolio-page--home .home-lede {
+    font-size: 18px !important;
+    line-height: 30px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .portfolio-page--home .home-lede {
+    font-size: 16px !important;
+    line-height: 26px !important;
+  }
+}
+
+.portfolio-page--home .home-cta-row {
+  flex-wrap: wrap;
+}
+
+@media (max-width: 480px) {
+  .portfolio-page--home .home-cta-row {
+    align-items: stretch !important;
+    flex-direction: column !important;
+  }
+
+  .portfolio-page--home .home-cta-row > a,
+  .portfolio-page--home .home-cta-row > div {
+    justify-content: center !important;
+    width: 100%;
+  }
+}
+
+/* Hero visual: desktop absolute → flow on small screens */
+.portfolio-page--home .home-floating-card-wrap {
+  position: absolute;
+  right: 72px;
+  top: 300px;
+}
+
+@media (max-width: 900px) {
+  .portfolio-page--home .home-floating-card-wrap {
+    justify-content: flex-start !important;
+    padding-top: 8px !important;
+    position: relative !important;
+    right: auto !important;
+    top: auto !important;
+    width: 100% !important;
+  }
+
+  .portfolio-page--home .home-floating-card-inner {
+    height: auto !important;
+    min-height: 220px;
+    width: 100% !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .portfolio-page--home .home-floating-card-inner {
+    border-radius: 20px !important;
+    min-height: 200px;
+  }
+}
+
+.portfolio-page--home .home-skills-row {
+  flex-direction: row;
+}
+
+@media (max-width: 900px) {
+  .portfolio-page--home .home-skills-row {
+    flex-direction: column !important;
+  }
+}
+
+@media (max-width: 900px) {
+  .portfolio-page--home .home-section-title {
+    font-size: 40px !important;
+    line-height: 42px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .portfolio-page--home .home-section-title {
+    font-size: 28px !important;
+    line-height: 30px !important;
+  }
+}
+
+.portfolio-page--home .home-project-row {
+  flex-direction: row;
+}
+
+@media (max-width: 900px) {
+  .portfolio-page--home .home-project-row {
+    flex-direction: column !important;
+  }
+}
+
+@media (max-width: 900px) {
+  .portfolio-page--home .home-project-card-title {
+    font-size: 28px !important;
+    line-height: 32px !important;
+  }
+
+  .portfolio-page--home .home-project-card-title-sm {
+    font-size: 24px !important;
+    line-height: 28px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .portfolio-page--home .home-project-card-title {
+    font-size: 20px !important;
+    line-height: 24px !important;
+  }
+
+  .portfolio-page--home .home-project-card-title-sm {
+    font-size: 18px !important;
+    line-height: 22px !important;
+  }
+}
+
+.portfolio-page--home .home-mid-cta {
+  align-items: center;
+  flex-direction: row;
+}
+
+@media (max-width: 900px) {
+  .portfolio-page--home .home-mid-cta {
+    align-items: flex-start !important;
+    flex-direction: column !important;
+    gap: 20px !important;
+  }
+
+  .portfolio-page--home .home-mid-cta-title {
+    font-size: 32px !important;
+    line-height: 36px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .portfolio-page--home .home-mid-cta-title {
+    font-size: 26px !important;
+    line-height: 30px !important;
+  }
+}
+
+.portfolio-page--home .home-page-footer {
+  align-items: flex-end;
+  flex-direction: row;
+}
+
+@media (max-width: 900px) {
+  .portfolio-page--home .home-page-footer {
+    align-items: flex-start !important;
+    flex-direction: column !important;
+    gap: 20px !important;
+  }
+}
+
+/* ——— Projects ——— */
+.portfolio-page--projects .projects-top {
+  align-items: flex-start;
+}
+
+@media (max-width: 900px) {
+  .portfolio-page--projects .projects-hero-title {
+    font-size: 44px !important;
+    line-height: 46px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .portfolio-page--projects .projects-hero-title {
+    font-size: 28px !important;
+    line-height: 32px !important;
+  }
+}
+
+.portfolio-page--projects .project-card-row {
+  flex-direction: row;
+}
+
+@media (max-width: 900px) {
+  .portfolio-page--projects .project-card-row {
+    flex-direction: column !important;
+    gap: 16px !important;
+    min-height: 0 !important;
+  }
+
+  .portfolio-page--projects .project-card-row > div:last-child {
+    align-items: flex-start !important;
+    flex-direction: row !important;
+    justify-content: space-between !important;
+    min-width: 0 !important;
+    width: 100%;
+  }
+
+  .portfolio-page--projects .project-body-title {
+    font-size: 26px !important;
+    line-height: 30px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .portfolio-page--projects .project-body-title {
+    font-size: 20px !important;
+    line-height: 24px !important;
+  }
+}
+
+@media (max-width: 900px) {
+  .portfolio-page--projects .projects-bottom-cta {
+    align-items: flex-start !important;
+    flex-direction: column !important;
+    gap: 16px !important;
+  }
+
+  .portfolio-page--projects .projects-bottom-cta-title {
+    font-size: 30px !important;
+    line-height: 34px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .portfolio-page--projects .projects-bottom-cta-title {
+    font-size: 22px !important;
+    line-height: 26px !important;
+  }
+}
+
+.portfolio-page--projects .projects-page-footer {
+  flex-direction: row;
+}
+
+@media (max-width: 600px) {
+  .portfolio-page--projects .projects-page-footer {
+    align-items: flex-start !important;
+    flex-direction: column !important;
+    gap: 12px !important;
+  }
+}
+
+/* ——— Contact ——— */
+.portfolio-page--contact .contact-hero-row {
+  flex-direction: row;
+}
+
+@media (max-width: 900px) {
+  .portfolio-page--contact .contact-hero-row {
+    flex-direction: column !important;
+    gap: 20px !important;
+  }
+
+  .portfolio-page--contact .contact-hero-title {
+    font-size: 44px !important;
+    line-height: 46px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .portfolio-page--contact .contact-hero-title {
+    font-size: 30px !important;
+    line-height: 34px !important;
+  }
+}
+
+.portfolio-page--contact .contact-form-row {
+  flex-direction: row;
+}
+
+@media (max-width: 900px) {
+  .portfolio-page--contact .contact-form-row {
+    flex-direction: column !important;
+  }
+}
+
+.portfolio-page--contact .contact-meta-strip {
+  flex-direction: row;
+}
+
+@media (max-width: 900px) {
+  .portfolio-page--contact .contact-meta-strip {
+    flex-wrap: wrap !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .portfolio-page--contact .contact-meta-strip {
+    flex-direction: column !important;
+  }
+
+  .portfolio-page--contact .contact-meta-strip > div {
+    width: 100%;
+  }
+}
+
+.portfolio-page--contact .contact-page-footer {
+  flex-direction: row;
+}
+
+@media (max-width: 600px) {
+  .portfolio-page--contact .contact-page-footer {
+    align-items: flex-start !important;
+    flex-direction: column !important;
+    gap: 12px !important;
+  }
+
+  .portfolio-page--contact .contact-page-footer > div:last-child {
+    flex-wrap: wrap !important;
+  }
+}
+
+/* ——— About ——— */
+.portfolio-page--about .about-hero-row {
+  flex-direction: row;
+}
+
+@media (max-width: 900px) {
+  .portfolio-page--about .about-hero-row {
+    flex-direction: column !important;
+    gap: 20px !important;
+  }
+
+  .portfolio-page--about .about-hero-title {
+    font-size: 44px !important;
+    line-height: 46px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .portfolio-page--about .about-hero-title {
+    font-size: 30px !important;
+    line-height: 34px !important;
+  }
+}
+
+.portfolio-page--about .about-story-row {
+  flex-direction: row;
+}
+
+@media (max-width: 900px) {
+  .portfolio-page--about .about-story-row {
+    flex-direction: column !important;
+  }
+}
+
+.portfolio-page--about .about-values-row {
+  flex-direction: row;
+}
+
+@media (max-width: 900px) {
+  .portfolio-page--about .about-values-row {
+    flex-direction: column !important;
+  }
+}
+
+.portfolio-page--about .about-tech-row {
+  align-items: flex-start;
+  flex-direction: row;
+}
+
+@media (max-width: 900px) {
+  .portfolio-page--about .about-tech-row {
+    flex-direction: column !important;
+    gap: 16px !important;
+  }
+
+  .portfolio-page--about .about-tech-line {
+    font-size: 28px !important;
+    line-height: 32px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .portfolio-page--about .about-tech-line {
+    font-size: 22px !important;
+    line-height: 26px !important;
+  }
+}
+
+.portfolio-page--about .about-cta-row {
+  align-items: center;
+  flex-direction: row;
+}
+
+@media (max-width: 900px) {
+  .portfolio-page--about .about-cta-row {
+    align-items: flex-start !important;
+    flex-direction: column !important;
+    gap: 16px !important;
+  }
+
+  .portfolio-page--about .about-cta-text {
+    font-size: 26px !important;
+    line-height: 30px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .portfolio-page--about .about-cta-text {
+    font-size: 22px !important;
+    line-height: 26px !important;
+  }
+}
+
+.portfolio-page--about .about-page-footer {
+  flex-direction: row;
+}
+
+@media (max-width: 600px) {
+  .portfolio-page--about .about-page-footer {
+    align-items: flex-start !important;
+    flex-direction: column !important;
+    gap: 12px !important;
+  }
+}
