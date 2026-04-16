@@ -1,9 +1,56 @@
 import { useMemo } from 'react'
 import PortfolioCtaLink from '../components/portfolio/PortfolioCtaLink.jsx'
-import TechOutlinePill from '../components/portfolio/TechOutlinePill.jsx'
 import { motion, useReducedMotion } from 'framer-motion'
 
 const easeOut = [0.22, 1, 0.36, 1]
+const educationItems = ['Associate degree of Art at Jakarta Institute of Arts, 2019', 'GPA 3.69 / 4.00']
+const workExperienceItems = [
+  'Creative Writer at Double D Management - The Sinathrya (2024 - Until Now)',
+  'Creative Writer at Tv One (2023-2024)',
+  'Part Time Content Writer at Rumah Siap Kerja (2023)',
+  'Part Time ScriptWriter at We Good (2022-2023)',
+  'Creative Writer at Viva.co.id "VDVC" (2021-2022)',
+  'Junior Scriptwriter at Goodscript part of Sinemart (2021-2022)',
+  'Creative Writer at LetrB Post Production (2021)',
+]
+const internshipItems = ['Content Writer at Moslem Journey (2019)', 'Content Writer at Meramuda.com (2019)']
+const coreSkills = [
+  {
+    title: 'Storytelling & Copywriting',
+    description:
+      'Crafting engaging narratives and persuasive messaging for scripts, campaigns, and social media content.',
+  },
+  {
+    title: 'Creative & Critical Thinking',
+    description: 'Generating fresh, relevant ideas while applying analytical thinking to solve challenges.',
+  },
+  {
+    title: 'Communication & Leadership',
+    description:
+      'Leading creative teams, facilitating brainstorming sessions, and ensuring effective collaboration.',
+  },
+  {
+    title: 'Strategic Thinking',
+    description: 'Aligning creative concepts with brand objectives and target audience needs.',
+  },
+  {
+    title: 'Visual Literacy',
+    description: 'Strong sense of visual aesthetics, composition, and brand-consistent tone.',
+  },
+  {
+    title: 'Teamwork',
+    description: 'Collaborating across departments to deliver cohesive and impactful results.',
+  },
+  {
+    title: 'Basic Editing Skills',
+    description: 'Understanding video editing fundamentals to enhance communication with production teams.',
+  },
+  {
+    title: 'YouTube Analytics',
+    description:
+      'Interpreting data insights to optimize content strategy, improve audience engagement, and increase channel performance.',
+  },
+]
 
 function useAboutMotionVariants () {
   const reduced = useReducedMotion()
@@ -96,12 +143,15 @@ export default function AboutPage () {
             </motion.div>
             
             <motion.h1 variants={fadeUp} className="mb-12 font-display text-[86px] font-bold leading-[0.9] tracking-[-0.02em] text-[#1A1020] sm:text-[100px]">
-              NOT NOISE. <br/> A POINT OF VIEW.
+                HELLO, I&apos;M MIYAJENG
             </motion.h1>
             
             <motion.p variants={fadeUp} className="relative z-20 max-w-[600px] rounded-[32px] border-4 border-[#1A1020] bg-white p-8 font-sans text-2xl font-600 leading-relaxed text-[#3D2F50] shadow-[8px_8px_0_0_#1A1020]">
-              I am all in on social that refuses filler: every clip has to justify itself in the first three seconds. Motion locked to the idea, visuals you recognize on repeat, and a cadence from teaser to launch that still sounds like a person, not a playbook.
+                I have worked as a creative writer for almost the past five years, where I am tasked with developing ideas into complete scripts.
             </motion.p>
+              <motion.p variants={fadeUp} className="mt-6 max-w-[600px] rounded-[32px] border-4 border-[#1A1020] bg-[#FFF0F7] p-8 font-sans text-xl font-500 leading-relaxed text-[#3D2F50] shadow-[8px_8px_0_0_#1A1020]">
+                These include scripts for YouTube content, film series, company profiles, and even creating storylines for brand reels on social media. I also have experience as a content writer, writing articles for websites.
+              </motion.p>
           </motion.div>
           
           <motion.div
@@ -159,77 +209,37 @@ export default function AboutPage () {
           <div className="relative grid grid-cols-1 gap-12 md:grid-cols-12 md:items-center">
             <motion.div variants={fadeLeft} className="md:col-span-5 md:col-start-2">
               <h2 className="mb-8 font-display text-[64px] font-bold leading-tight tracking-[-0.02em] text-[#1A1020]">
-                From scrappy edits to campaign months.
+                Education
               </h2>
-              <motion.div
-                className="inline-flex items-center gap-4 rounded-full border-2 border-[#1A1020] bg-[#1A1020] px-6 py-3 text-white shadow-[4px_4px_0_0_#FF3D8A]"
-                whileHover={reduced ? undefined : { y: -3, boxShadow: '6px 8px 0 0 #FF3D8A' }}
-                transition={{ type: 'spring', stiffness: 420, damping: 24 }}
-              >
-                <span className="font-sans text-sm font-800 uppercase tracking-widest">Always Iterating</span>
-              </motion.div>
+              <ul className="list-disc space-y-2 pl-6 font-sans text-xl font-600 leading-relaxed text-[#1A1020]">
+                {educationItems.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
             </motion.div>
 
             <motion.div variants={fadeRight} className="md:col-span-5 md:col-start-8">
-              <p className="mb-8 border-l-4 border-[#FF3D8A] pl-6 font-sans text-xl font-600 leading-relaxed text-[#1A1020]">
-                Started from simple daily posts, then grew into full campaign storytelling with a clear voice and strong point of view.
-              </p>
-              <p className="font-sans text-xl font-500 leading-relaxed text-[#2D2438]">
-                Today I help brands and creators shape launch stories people remember. I care about hook, pacing, emotional tone, and a visual identity you can recognize in one frame.
-              </p>
+              <h2 className="mb-8 font-display text-[64px] font-bold leading-tight tracking-[-0.02em] text-[#1A1020]">
+                Work Experience
+              </h2>
+              <ul className="list-disc space-y-2 pl-6 font-sans text-xl font-600 leading-relaxed text-[#2D2438]">
+                {workExperienceItems.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+              <h3 className="mb-6 mt-10 font-display text-[40px] font-bold leading-tight tracking-[-0.02em] text-[#1A1020]">
+                Internship
+              </h3>
+              <ul className="list-disc space-y-2 pl-6 font-sans text-xl font-600 leading-relaxed text-[#2D2438]">
+                {internshipItems.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
             </motion.div>
           </div>
         </motion.div>
 
-        {/* Values - Asymmetric List */}
-        <div className="py-20">
-          <motion.h2 
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
-            variants={fadeUp}
-            className="font-display text-[80px] font-bold text-[#1A1020] mb-20 text-center"
-          >
-            The <span className="text-[#A855F7] italic">Values</span>
-          </motion.h2>
-          
-          <motion.div 
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
-            variants={staggerContainer}
-            className="flex flex-col gap-16 max-w-[800px] mx-auto"
-          >
-            {/* Value 1 */}
-            <motion.div variants={fadeUp} className="relative flex items-center gap-8 group">
-              <div className="text-[120px] font-display font-bold text-[#FFD93D] drop-shadow-[4px_4px_0_rgba(26,16,32,1)] group-hover:scale-110 transition-transform duration-300">1</div>
-              <div className="flex-1 bg-white border-4 border-[#1A1020] rounded-[32px] p-8 shadow-[8px_8px_0_0_#1A1020] rotate-[-1deg] group-hover:rotate-0 transition-transform duration-300">
-                <h3 className="font-display text-4xl font-bold text-[#1A1020] mb-2">Hook before polish</h3>
-                <p className="font-sans text-lg font-600 text-[#5A4A6A]">If they scroll past it in 3 seconds, the polish doesn't matter.</p>
-              </div>
-            </motion.div>
-            
-            {/* Value 2 */}
-            <motion.div variants={fadeUp} className="relative flex items-center gap-8 flex-row-reverse group">
-              <div className="text-[120px] font-display font-bold text-[#FF3D8A] drop-shadow-[4px_4px_0_rgba(26,16,32,1)] group-hover:scale-110 transition-transform duration-300">2</div>
-              <div className="flex-1 bg-[#FFF0F7] border-4 border-[#1A1020] rounded-[32px] p-8 shadow-[8px_8px_0_0_#1A1020] rotate-[2deg] group-hover:rotate-0 transition-transform duration-300 text-right">
-                <h3 className="font-display text-4xl font-bold text-[#1A1020] mb-2">Captions that read clean</h3>
-                <p className="font-sans text-lg font-600 text-[#5A4A6A]">Accessible by default. Typography that adds to the story, not distracts.</p>
-              </div>
-            </motion.div>
-            
-            {/* Value 3 */}
-            <motion.div variants={fadeUp} className="relative flex items-center gap-8 group">
-              <div className="text-[120px] font-display font-bold text-[#A855F7] drop-shadow-[4px_4px_0_rgba(26,16,32,1)] group-hover:scale-110 transition-transform duration-300">3</div>
-              <div className="flex-1 bg-[#F5EDFF] border-4 border-[#1A1020] rounded-[32px] p-8 shadow-[8px_8px_0_0_#1A1020] rotate-[-1deg] group-hover:rotate-0 transition-transform duration-300">
-                <h3 className="font-display text-4xl font-bold text-[#1A1020] mb-2">Motion serves the idea</h3>
-                <p className="font-sans text-lg font-600 text-[#5A4A6A]">Animation should guide the eye, not just look cool for the sake of it.</p>
-              </div>
-            </motion.div>
-          </motion.div>
-        </div>
-
-        {/* Creative Process - Giant Text + pill stagger */}
+        {/* Personal Skills */}
         <motion.div 
           initial="hidden"
           whileInView="visible"
@@ -237,38 +247,35 @@ export default function AboutPage () {
           variants={staggerContainer}
           className="relative my-16 overflow-x-clip border-y-8 border-[#FFD93D] bg-[#1A1020] px-4 py-12 max-[480px]:-mx-5 max-[480px]:w-[calc(100%+2.5rem)] min-[481px]:max-[900px]:-mx-8 min-[481px]:max-[900px]:w-[calc(100%+4rem)] min-[901px]:-mx-[72px] min-[901px]:w-[calc(100%+9rem)] sm:my-24 sm:px-6 sm:py-16 md:my-32 md:px-8 md:py-20 lg:px-10 lg:py-24"
         >
-          <motion.div
-            aria-hidden
-            variants={{
-              hidden: { opacity: 0, rotate: 10 },
-              visible: { opacity: 0.12, rotate: 15, transition: { duration: reduced ? 0.01 : 0.8, ease: easeOut } }
-            }}
-            className="pointer-events-none absolute -right-8 -top-8 text-[100px] text-white opacity-90 sm:-right-10 sm:-top-10 sm:text-[160px] md:text-[220px] xl:-right-[50px] xl:-top-[50px] xl:text-[300px]"
-          >
-            🛠️
-          </motion.div>
+          <div aria-hidden className="pointer-events-none absolute -right-28 top-0 h-[380px] w-[380px] rounded-full border-2 border-[#FF8EC5]/30 opacity-60 blur-[1px]" />
+          <div aria-hidden className="pointer-events-none absolute -right-8 top-8 h-[220px] w-[220px] rounded-full border border-[#FF8EC5]/35" />
+          <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top_right,rgba(255,142,197,0.18),transparent_42%)]" />
           <motion.div variants={staggerContainer} className="relative z-10 mx-auto min-w-0 max-w-[1000px] px-0">
             <motion.h2
               variants={fadeUp}
-              className="mb-8 max-w-full break-words text-balance font-display text-[clamp(1.35rem,4.2vw+0.6rem,4rem)] font-bold !leading-[1.12] !tracking-[-0.02em] !text-[#F4F0FA] sm:mb-10 md:mb-12"
+              className="mb-6 max-w-full text-balance font-display text-[clamp(2.5rem,8vw,7.5rem)] font-bold uppercase leading-[0.9] tracking-[-0.01em] text-[#FFB6E6] sm:mb-8"
             >
-              <span className="!text-[#F4F0FA]">
-                I blend instinct, rhythm, and visual storytelling,{` `}
-              </span>
-              <span className="!text-[#FF8EC5] italic drop-shadow-[0_1px_12px_rgba(255,62,138,0.35)]">
-                then shape each idea until it feels unmistakably human.
-              </span>
+              Personal Skills
             </motion.h2>
-            <motion.div variants={staggerContainer} className="flex min-w-0 flex-col gap-3 sm:flex-row sm:flex-wrap sm:gap-4">
-              <motion.div variants={fadeUp} className="min-w-0 w-full sm:w-auto sm:max-w-[calc(50%-0.5rem)] md:max-w-none">
-                <TechOutlinePill className="w-full sm:w-auto" color="yellow">Audience empathy</TechOutlinePill>
-              </motion.div>
-              <motion.div variants={fadeUp} className="min-w-0 w-full sm:w-auto sm:max-w-[calc(50%-0.5rem)] md:max-w-none">
-                <TechOutlinePill className="w-full sm:w-auto" color="pink">Brand storytelling</TechOutlinePill>
-              </motion.div>
-              <motion.div variants={fadeUp} className="min-w-0 w-full sm:max-w-full md:max-w-none">
-                <TechOutlinePill className="w-full sm:w-auto" color="purple">Community energy</TechOutlinePill>
-              </motion.div>
+            <motion.div variants={fadeUp} className="mb-10 max-w-[930px]">
+              <h3 className="font-sans text-[clamp(1.15rem,2.2vw,2rem)] font-800 leading-snug text-[#FFE8F8]">
+                Creative Writer | 5 Years in Creative Industry
+              </h3>
+              <p className="mt-2 font-sans text-[clamp(1rem,1.3vw,1.5rem)] font-500 leading-relaxed text-[#F3D7EA]">
+                Experienced creative writer with nearly five years in the creative industry, specializing in
+                developing and executing compelling ideas across various media platforms.
+              </p>
+            </motion.div>
+            <motion.div variants={fadeUp} className="rounded-[26px] border-2 border-[#FF8EC5]/50 bg-[#161221]/85 p-6 sm:p-8">
+              <h4 className="mb-4 font-sans text-xl font-800 text-[#FFB6E6] sm:text-2xl">Core Skills</h4>
+              <ul className="list-disc space-y-2.5 pl-6 font-sans text-[clamp(1rem,1.25vw,1.6rem)] font-500 leading-relaxed text-[#FFE8F8]">
+                {coreSkills.map((skill) => (
+                  <li key={skill.title}>
+                    <span className="font-800 text-[#FFD4F0]">{skill.title}</span>
+                    <span className="text-[#EFD9EB]"> - {skill.description}</span>
+                  </li>
+                ))}
+              </ul>
             </motion.div>
           </motion.div>
         </motion.div>
@@ -290,7 +297,7 @@ export default function AboutPage () {
             👋
           </motion.div>
           <motion.h2 variants={fadeUp} className="mb-10 max-w-[800px] font-display text-[56px] font-bold leading-tight text-[#1A1020]">
-            Want me on your next launch or content sprint?
+            Interested in working together on your next content project?
           </motion.h2>
           <motion.div variants={fadeUp} whileHover={reduced ? undefined : { scale: 1.03 }} whileTap={reduced ? undefined : { scale: 0.98 }}>
             <PortfolioCtaLink to="/contact" size="comfortable" className="text-xl px-12 py-5 text-white">
