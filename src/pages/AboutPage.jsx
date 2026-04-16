@@ -1,19 +1,28 @@
-import { useMemo } from 'react'
+import { useMemo, useRef, useState } from 'react'
 import PortfolioCtaLink from '../components/portfolio/PortfolioCtaLink.jsx'
-import { motion, useReducedMotion } from 'framer-motion'
+import { motion, useReducedMotion, useScroll, useTransform, useMotionValueEvent } from 'framer-motion'
 
 const easeOut = [0.22, 1, 0.36, 1]
-const educationItems = ['Associate degree of Art at Jakarta Institute of Arts, 2019', 'GPA 3.69 / 4.00']
-const workExperienceItems = [
-  'Creative Writer at Double D Management - The Sinathrya (2024 - Until Now)',
-  'Creative Writer at Tv One (2023-2024)',
-  'Part Time Content Writer at Rumah Siap Kerja (2023)',
-  'Part Time ScriptWriter at We Good (2022-2023)',
-  'Creative Writer at Viva.co.id "VDVC" (2021-2022)',
-  'Junior Scriptwriter at Goodscript part of Sinemart (2021-2022)',
-  'Creative Writer at LetrB Post Production (2021)',
+
+const workExperienceData = [
+  { role: 'Creative Writer', company: 'Double D Management - The Sinathrya', year: '2024 - Now', color: 'bg-white' },
+  { role: 'Creative Writer', company: 'Tv One', year: '2023 - 2024', color: 'bg-[#FFF0F7]' },
+  { role: 'Part Time Content Writer', company: 'Rumah Siap Kerja', year: '2023', color: 'bg-[#F5EDFF]' },
+  { role: 'Part Time ScriptWriter', company: 'We Good', year: '2022 - 2023', color: 'bg-white' },
+  { role: 'Creative Writer', company: 'Viva.co.id "VDVC"', year: '2021 - 2022', color: 'bg-[#FFFBE0]' },
+  { role: 'Junior Scriptwriter', company: 'Goodscript part of Sinemart', year: '2021 - 2022', color: 'bg-[#FFF0F7]' },
+  { role: 'Creative Writer', company: 'LetrB Post Production', year: '2021', color: 'bg-[#F5EDFF]' },
+  { role: 'Content Writer', company: 'Moslem Journey', year: '2019', color: 'bg-white', type: 'Internship' },
+  { role: 'Content Writer', company: 'Meramuda.com', year: '2019', color: 'bg-[#FFF0F7]', type: 'Internship' },
 ]
-const internshipItems = ['Content Writer at Moslem Journey (2019)', 'Content Writer at Meramuda.com (2019)']
+
+const educationData = {
+  degree: 'Associate degree of Art',
+  place: 'Jakarta Institute of Arts',
+  year: '2019',
+  extra: 'GPA 3.69 / 4.00'
+}
+
 const coreSkills = [
   {
     title: 'Storytelling & Copywriting',
@@ -127,6 +136,21 @@ export default function AboutPage () {
   const { reduced, fadeUp, fadeLeft, fadeRight, scaleIn, staggerContainer, storyCard } =
     useAboutMotionVariants()
 
+  const timelineRef = useRef(null)
+  const { scrollYProgress } = useScroll({
+    target: timelineRef,
+    offset: ["start center", "end center"]
+  })
+
+  const [activeWorkIndex, setActiveWorkIndex] = useState(0)
+  useMotionValueEvent(scrollYProgress, "change", (latest) => {
+    const total = workExperienceData.length
+    let index = Math.floor(latest * total)
+    if (index >= total) index = total - 1
+    if (index < 0) index = 0
+    setActiveWorkIndex(index)
+  })
+
   return (
     <>
       <div className="relative py-20">
@@ -201,41 +225,75 @@ export default function AboutPage () {
           whileInView="visible"
           viewport={{ once: true, margin: '-100px' }}
           variants={storyCard}
-          className="relative mb-32 mt-40 overflow-hidden rounded-[40px] border-4 border-[#1A1020] bg-white p-8 shadow-[10px_10px_0_0_#1A1020] md:p-12 lg:p-14"
+          className="relative mb-32 mt-40"
         >
-          <div className="pointer-events-none absolute -right-20 -top-20 h-[280px] w-[280px] rounded-full bg-[#FFD93D]/35 blur-[70px]" aria-hidden />
-          <div className="pointer-events-none absolute -bottom-24 -left-16 h-[320px] w-[320px] rounded-full bg-[#FF3D8A]/25 blur-[90px]" aria-hidden />
-
-          <div className="relative grid grid-cols-1 gap-12 md:grid-cols-12 md:items-center">
-            <motion.div variants={fadeLeft} className="md:col-span-5 md:col-start-2">
-              <h2 className="mb-8 font-display text-[64px] font-bold leading-tight tracking-[-0.02em] text-[#1A1020]">
-                Education
-              </h2>
-              <ul className="list-disc space-y-2 pl-6 font-sans text-xl font-600 leading-relaxed text-[#1A1020]">
-                {educationItems.map((item) => (
-                  <li key={item}>{item}</li>
-                ))}
-              </ul>
+          <div className="relative grid grid-cols-1 gap-16 md:grid-cols-12 md:items-start">
+            
+            {/* Left Column: Education */}
+            <motion.div variants={fadeLeft} className="md:col-span-5 md:col-start-1 lg:col-span-4 lg:col-start-2 md:sticky md:top-32 h-fit">
+              <div className="mb-16">
+                <h2 className="mb-8 font-display text-[48px] sm:text-[56px] font-bold leading-tight tracking-[-0.02em] text-[#1A1020]">
+                  Education
+                </h2>
+                <div className="border-l-8 border-[#FFD93D] pl-6 md:pl-8 py-2">
+                  <h3 className="font-display text-3xl sm:text-4xl font-bold text-[#1A1020] leading-tight mb-2">{educationData.degree}</h3>
+                  <p className="font-sans text-xl sm:text-2xl font-600 text-[#5A4A6A] mb-4">{educationData.place}, {educationData.year}</p>
+                  <p className="inline-block rounded-full border-2 border-[#1A1020] bg-[#FF3D8A] px-4 py-1 font-sans text-sm sm:text-base font-800 text-white shadow-[2px_2px_0_0_#1A1020]">
+                    {educationData.extra}
+                  </p>
+                </div>
+              </div>
             </motion.div>
 
-            <motion.div variants={fadeRight} className="md:col-span-5 md:col-start-8">
-              <h2 className="mb-8 font-display text-[64px] font-bold leading-tight tracking-[-0.02em] text-[#1A1020]">
+            {/* Right Column: Work Experience */}
+            <motion.div variants={fadeRight} className="md:col-span-6 md:col-start-7 lg:col-span-6 lg:col-start-7">
+              <h2 className="mb-8 font-display text-[48px] sm:text-[56px] font-bold leading-tight tracking-[-0.02em] text-[#1A1020]">
                 Work Experience
               </h2>
-              <ul className="list-disc space-y-2 pl-6 font-sans text-xl font-600 leading-relaxed text-[#2D2438]">
-                {workExperienceItems.map((item) => (
-                  <li key={item}>{item}</li>
-                ))}
-              </ul>
-              <h3 className="mb-6 mt-10 font-display text-[40px] font-bold leading-tight tracking-[-0.02em] text-[#1A1020]">
-                Internship
-              </h3>
-              <ul className="list-disc space-y-2 pl-6 font-sans text-xl font-600 leading-relaxed text-[#2D2438]">
-                {internshipItems.map((item) => (
-                  <li key={item}>{item}</li>
-                ))}
-              </ul>
+              <div ref={timelineRef} className="relative ml-4 md:ml-6 space-y-8 pb-4">
+                
+                {workExperienceData.map((item, i) => {
+                  const isActive = i === activeWorkIndex;
+                  const isLast = i === workExperienceData.length - 1;
+                  return (
+                  <div key={i} className="relative pl-8 md:pl-10">
+                    {/* Line segment connecting to next item */}
+                    {!isLast && (
+                      <div className="absolute left-0 top-5 -bottom-[3.25rem] w-1 bg-[#1A1020] z-0" />
+                    )}
+
+                    {/* Static small dot */}
+                    <div className={`absolute -left-[5px] top-5 h-3.5 w-3.5 rounded-full border-2 border-[#1A1020] ${isActive ? 'bg-[#FFD93D]' : 'bg-[#1A1020]'} transition-colors duration-300 z-10`} />
+                    
+                    {/* Animated active dot */}
+                    {isActive && (
+                      <motion.div
+                        layoutId="activeWorkDot"
+                        className="absolute -left-[10px] top-4 h-6 w-6 rounded-full border-4 border-[#1A1020] bg-[#FF3D8A] z-20"
+                        transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                      />
+                    )}
+
+                    <div className={`rounded-2xl border-4 border-[#1A1020] ${isActive ? 'bg-[#FFD93D]' : item.color} p-5 shadow-[4px_4px_0_0_#1A1020] transition-all duration-300 hover:-translate-y-1 hover:shadow-[6px_6px_0_0_#1A1020]`}>
+                      <div className="mb-3 flex flex-wrap gap-2">
+                        <span className="inline-block rounded-full border-2 border-[#1A1020] bg-[#1A1020] px-3 py-1 font-sans text-xs font-800 text-white">
+                          {item.year}
+                        </span>
+                        {item.type === 'Internship' && (
+                          <span className="inline-block rounded-full border-2 border-[#1A1020] bg-[#A855F7] px-3 py-1 font-sans text-xs font-800 text-white">
+                            Internship
+                          </span>
+                        )}
+                      </div>
+                      <h3 className="font-display text-2xl font-bold text-[#1A1020] leading-tight mb-2">{item.role}</h3>
+                      <p className="font-sans text-lg font-600 text-[#5A4A6A]">{item.company}</p>
+                    </div>
+                  </div>
+                  )
+                })}
+              </div>
             </motion.div>
+
           </div>
         </motion.div>
 
@@ -266,16 +324,26 @@ export default function AboutPage () {
                 developing and executing compelling ideas across various media platforms.
               </p>
             </motion.div>
-            <motion.div variants={fadeUp} className="rounded-[26px] border-2 border-[#FF8EC5]/50 bg-[#161221]/85 p-6 sm:p-8">
-              <h4 className="mb-4 font-sans text-xl font-800 text-[#FFB6E6] sm:text-2xl">Core Skills</h4>
-              <ul className="list-disc space-y-2.5 pl-6 font-sans text-[clamp(1rem,1.25vw,1.6rem)] font-500 leading-relaxed text-[#FFE8F8]">
-                {coreSkills.map((skill) => (
-                  <li key={skill.title}>
-                    <span className="font-800 text-[#FFD4F0]">{skill.title}</span>
-                    <span className="text-[#EFD9EB]"> - {skill.description}</span>
-                  </li>
-                ))}
-              </ul>
+            <motion.div variants={fadeUp} className="mt-12">
+              <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+                {coreSkills.map((skill, i) => {
+                  const cardColors = ['bg-[#FFD93D]', 'bg-[#FFB6E6]', 'bg-[#A855F7]', 'bg-[#4ADE80]', 'bg-[#60A5FA]', 'bg-[#FBBF24]', 'bg-[#FF3D8A]', 'bg-[#FFFBE0]']
+                  const color = cardColors[i % cardColors.length]
+                  return (
+                    <motion.div 
+                      key={skill.title}
+                      variants={fadeUp}
+                      className="group relative flex flex-col rounded-[24px] border-4 border-[#1A1020] bg-white p-6 shadow-[6px_6px_0_0_#1A1020] transition-transform hover:-translate-y-2 hover:shadow-[10px_10px_0_0_#1A1020]"
+                    >
+                      <div className={`mb-6 h-14 w-14 rounded-full border-4 border-[#1A1020] ${color} flex items-center justify-center font-display text-2xl font-bold text-[#1A1020] shadow-[4px_4px_0_0_#1A1020] transition-transform group-hover:rotate-12`}>
+                        {i + 1}
+                      </div>
+                      <h4 className="mb-3 font-display text-xl font-bold leading-tight text-[#1A1020]">{skill.title}</h4>
+                      <p className="font-sans text-base font-600 text-[#5A4A6A] leading-relaxed">{skill.description}</p>
+                    </motion.div>
+                  )
+                })}
+              </div>
             </motion.div>
           </motion.div>
         </motion.div>

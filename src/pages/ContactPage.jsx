@@ -24,7 +24,7 @@ export default function ContactPage () {
           initial="hidden"
           animate="visible"
           variants={staggerContainer}
-          className="min-w-0 flex-1 shrink sticky top-20"
+          className="min-w-0 flex-1 shrink lg:sticky lg:top-20"
         >
           <motion.div variants={fadeUp} className="inline-flex w-fit items-center rounded-full bg-[#FF3D8A] border-2 border-[#1A1020] px-4 py-1.5 shadow-[2px_2px_0_0_#1A1020] rotate-[-3deg] mb-12">
             <span className="font-sans text-xs font-800 uppercase tracking-[0.12em] text-white">Miyajeng — open inbox</span>
@@ -34,7 +34,7 @@ export default function ContactPage () {
             LET&apos;S <br/> TALK <span className="italic text-[#A855F7] drop-shadow-[4px_4px_0_rgba(26,16,32,1)]">DROPS.</span>
           </motion.h1>
           
-          <motion.p variants={fadeUp} className="font-sans text-2xl font-600 leading-relaxed text-[#3D2F50] max-w-[500px] mb-16">
+          <motion.p variants={fadeUp} className="max-w-[560px] rounded-2xl bg-[#FFFBEE]/85 p-4 font-sans text-2xl font-600 leading-relaxed text-[#3D2F50] backdrop-blur-sm mb-16">
             If you want social content with a clear voice and real emotional pull, I can help shape the story from first teaser to final post.
           </motion.p>
           

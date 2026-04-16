@@ -37,7 +37,7 @@ export default function ProjectsPage () {
         <motion.h1 variants={fadeUp} className="font-display text-[90px] sm:text-[120px] font-bold leading-[0.9] tracking-[-0.02em] text-[#1A1020] max-w-[1000px] z-10 drop-shadow-[4px_4px_0_rgba(255,217,61,1)]">
           SELECTED <span className="italic text-[#FF3D8A]">WORKS</span>
         </motion.h1>
-        <motion.p variants={fadeUp} className="font-sans text-2xl font-600 text-[#5A4A6A] mt-8 max-w-[600px] z-10">
+        <motion.p variants={fadeUp} className="mt-8 max-w-[680px] rounded-2xl bg-[#FFFBEE]/85 p-4 font-sans text-2xl font-600 text-[#5A4A6A] backdrop-blur-sm z-10">
           From YouTube channels to social media campaigns, here are some of the projects I've been involved in.
         </motion.p>
       </motion.div>
