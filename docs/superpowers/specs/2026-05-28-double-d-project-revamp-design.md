@@ -72,19 +72,19 @@ PROJECT 01 — DOUBLE D MANAGEMENT  (existing dark card chrome retained)
 
 ```js
 const DD_YOUTUBE = [
-  { src: '/projects/dd/youtube/qna.jpg',   title: 'QnA Bareng Lio, Diego, Sabrina!! Siap Pindah ke Portugal?!' },
-  { src: '/projects/dd/youtube/ngode.jpg', title: 'BATASAN SELINGKUH DI ERA DIGITAL — NGODE Podcast' },
-  { src: '/projects/dd/youtube/lele.jpg',  title: 'LELE CRISPY & KULIT CABE GARAM?! Darius & Donna Coba Nasi Uduk' },
+  { src: '/projects/dd/dd-1.png', title: 'QnA Bareng Lio, Diego, Sabrina!! Siap Pindah ke Portugal?!' },
+  { src: '/projects/dd/dd-2.png', title: 'BATASAN SELINGKUH DI ERA DIGITAL — NGODE Podcast' },
+  { src: '/projects/dd/dd-3.png', title: 'LELE CRISPY & KULIT CABE GARAM?! Darius & Donna Coba Nasi Uduk' },
 ]
 
 const DD_SOCIAL = [
-  { src: '/projects/dd/social/rendang.jpg',  handle: '@rendang.warisanbundo', href: 'https://www.instagram.com/rendang.warisanbundo/' },
-  { src: '/projects/dd/social/omahan.jpg',   handle: '@omahan.kitchen',       href: 'https://www.instagram.com/omahan.kitchen/' },
-  { src: '/projects/dd/social/do_style.jpg', handle: '@do.style.official',    href: 'https://www.instagram.com/do.style.official/' },
+  { src: '/projects/dd/dd-4.jpg', handle: '@rendang.warisanbundo', href: 'https://www.instagram.com/rendang.warisanbundo/' },
+  { src: '/projects/dd/dd-5.jpg', handle: '@omahan.kitchen',       href: 'https://www.instagram.com/omahan.kitchen/' },
+  { src: '/projects/dd/dd-6.jpg', handle: '@do.style.official',    href: 'https://www.instagram.com/do.style.official/' },
 ]
 ```
 
-Titles and IG URLs above are placeholders sourced from the deck — user provides the final values.
+`dd-1..3.png` = YouTube thumbnails. `dd-4..6.jpg` = IG profile screenshots. Files already exist in `public/projects/dd/` — no new assets needed. Titles and IG URLs above are placeholders sourced from the deck; user provides the final values.
 
 ## Copy allocation
 
@@ -99,16 +99,18 @@ Source: existing `ProjectsPage.jsx:71-83`.
 
 (P3 mentions social media, but in the context of brand-content storylines — it belongs to YouTube/creative side, not pure editing work. User may reallocate if preferred.)
 
-## Asset requirements (user-supplied before merge)
+## Asset mapping
 
-- `public/projects/dd/youtube/qna.jpg`
-- `public/projects/dd/youtube/ngode.jpg`
-- `public/projects/dd/youtube/lele.jpg`
-- `public/projects/dd/social/rendang.jpg`
-- `public/projects/dd/social/omahan.jpg`
-- `public/projects/dd/social/do_style.jpg`
+All assets already exist in `public/projects/dd/`. No new files needed.
 
-Until assets land, the page can ship with broken `img` references — visible to the user, easy to spot, no fallback hack added.
+| Slot | File | Purpose |
+|------|------|---------|
+| Sub-block A, card 1 | `dd-1.png` | YouTube thumbnail |
+| Sub-block A, card 2 | `dd-2.png` | YouTube thumbnail |
+| Sub-block A, card 3 | `dd-3.png` | YouTube thumbnail |
+| Sub-block B, card 1 | `dd-4.jpg` | IG profile screenshot |
+| Sub-block B, card 2 | `dd-5.jpg` | IG profile screenshot |
+| Sub-block B, card 3 | `dd-6.jpg` | IG profile screenshot |
 
 ## What is removed
 
@@ -133,7 +135,7 @@ No automated test suite exists. Manual verification:
 5. Mobile (< 768px): vertical stacking, images full-width, copy readable.
 6. Hover Project 01 — outer accent overlay still appears.
 7. Scroll to VDVC (Project 02) — confirm Swiper still works, no regression.
-8. Check console: no 404s for the 6 image paths (after user supplies assets).
+8. Check console: no 404s for `dd-1.png` through `dd-6.jpg`.
 
 ## Out-of-scope follow-ups
 
