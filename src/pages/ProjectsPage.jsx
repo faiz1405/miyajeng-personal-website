@@ -5,6 +5,29 @@ import { Autoplay, EffectCards } from 'swiper/modules'
 import 'swiper/css'
 import 'swiper/css/effect-cards'
 
+const DD_YOUTUBE = [
+  { src: '/projects/dd/dd-1.png', title: 'QnA Bareng Lio, Diego, Sabrina!! Siap Pindah ke Portugal?!' },
+  { src: '/projects/dd/dd-2.png', title: 'BATASAN SELINGKUH DI ERA DIGITAL — NGODE Podcast' },
+  { src: '/projects/dd/dd-3.png', title: 'LELE CRISPY & KULIT CABE GARAM?! Darius & Donna Coba Nasi Uduk' },
+]
+
+const DD_SOCIAL = [
+  { src: '/projects/dd/dd-4.jpg', handle: '@darius_sinathrya',      href: 'https://www.instagram.com/darius_sinathrya/' },
+  { src: '/projects/dd/dd-5.jpg', handle: '@dagnesia',         href: 'https://www.instagram.com/dagnesia/' },
+  { src: '/projects/dd/dd-6.jpg', handle: '@do.skin.official',     href: 'https://www.instagram.com/do.skin.official/' },
+  { src: '/projects/dd/dd-7.jpg', handle: '@do.style.official',    href: 'https://www.instagram.com/do.style.official/' },
+  { src: '/projects/dd/dd-8.jpg', handle: '@rendang.warisanbundo', href: 'https://www.instagram.com/rendang.warisanbundo/' },
+  { src: '/projects/dd/dd-9.jpg', handle: '@omahan.kitchen',       href: 'https://www.instagram.com/omahan.kitchen/' },
+]
+
+const VDVC_THUMBNAILS = [
+  { src: '/projects/vdvc/vdvc-1.png', alt: 'VDVC program preview 1' },
+  { src: '/projects/vdvc/vdvc-2.png', alt: 'VDVC program preview 2' },
+  { src: '/projects/vdvc/vdvc-3.png', alt: 'VDVC program preview 3' },
+]
+
+const VDVC_KATA_USTAD_URL = 'https://www.youtube.com/playlist?list=PLBBqMRL8tzk9_62OpIKY1Crtfekz9qqUl'
+
 const fadeUp = {
   hidden: { opacity: 0, y: 40 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: 'easeOut' } }
@@ -46,7 +69,7 @@ export default function ProjectsPage () {
       <div className="py-10 flex flex-col gap-32">
         
         {/* Project 01 - Double D Management */}
-        <motion.div 
+        <motion.div
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
@@ -54,62 +77,97 @@ export default function ProjectsPage () {
           className="relative group"
         >
           <div className="absolute -inset-4 bg-[#FFD93D] rounded-[48px] rotate-[1deg] opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-          <div className="relative flex flex-col lg:flex-row gap-12 rounded-[40px] bg-[#1A1020] border-4 border-[#1A1020] p-12 shadow-[16px_16px_0_0_#1A1020] overflow-hidden">
+          <div className="relative flex flex-col gap-16 rounded-[40px] bg-[#1A1020] border-4 border-[#1A1020] p-12 shadow-[16px_16px_0_0_#1A1020] overflow-hidden">
             <div className="absolute top-0 right-0 w-64 h-64 bg-white opacity-10 rounded-full blur-3xl"></div>
-            
-            <div className="flex-1 flex flex-col justify-between z-10">
-              <div>
-                <div className="flex items-center gap-4 mb-8">
-                  <span className="font-display text-[80px] font-bold text-[#FFD93D] leading-none">01</span>
-                  <div className="inline-flex items-center rounded-full bg-[#FF3D8A] border-2 border-[#1A1020] px-4 py-2 rotate-[-2deg]">
-                    <span className="font-sans text-sm font-800 uppercase tracking-widest text-white">Double D Management</span>
-                  </div>
-                </div>
-                <h2 className="font-display text-[56px] !font-bold leading-[1.1]  mb-6  !text-[#ffd93d]">
-                  Creative Lead for The Sinathrya's YouTube & Social Media
-                </h2>
-                <div className="font-sans text-lg font-500 text-[#C0A8E0] mb-10 space-y-4">
-                  <p>
-                    At Double D Management, I'm in charge of creative. I handle the creative for The Sinathrya's YouTube channel and the brand content on Darius Sinathrya and Donna Agnesia's social media channels.
-                  </p>
-                  <p>
-                    On YouTube, I'm responsible for creating content plans, along with guidelines and scripts for daily vlogs, culinary vlogs, and the NGODE podcast. I'm also involved in the filming process for each vlog and optimize and quality-check the content before publishing.
-                  </p>
-                  <p>
-                    For their social media channels, I'm involved in creating ideas/storylines for brand content, such as endorsements and brand ambassador content. I sometimes help create Reels for their respective branding personas.
-                  </p>
-                  <p>
-                    I also edit several videos for Donna Agnesia's social media brands, such as "do skin official," "do style," "Omahan Kitchen" and "rendang warisan bundo."
-                  </p>
+
+            {/* Header */}
+            <div className="z-10">
+              <div className="flex items-center gap-4 mb-8">
+                <span className="font-display text-[80px] font-bold text-[#FFD93D] leading-none">01</span>
+                <div className="inline-flex items-center rounded-full bg-[#FF3D8A] border-2 border-[#1A1020] px-4 py-2 rotate-[-2deg]">
+                  <span className="font-sans text-sm font-800 uppercase tracking-widest text-white">Double D Management</span>
                 </div>
               </div>
-              
-              <div className="flex items-center justify-between mt-auto">
-                <a href="https://www.youtube.com/@DariusDonna/featured" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center rounded-full border-4 border-[#1A1020] bg-[#FFD93D] px-8 py-4 cursor-pointer shadow-[4px_4px_0_0_#1A1020] hover:shadow-none hover:translate-x-[4px] hover:translate-y-[4px] transition-all duration-150">
+              <h2 className="font-display text-[56px] !font-bold leading-[1.1] !text-[#ffd93d]">
+                Creative Lead for The Sinathrya's YouTube &amp; Social Media
+              </h2>
+            </div>
+
+            {/* Sub-block A — YouTube Creative */}
+            <div className="z-10 flex flex-col lg:flex-row gap-10">
+              <div className="flex-1 flex flex-col justify-between">
+                <div>
+                  <div className="inline-flex items-center rounded-full bg-[#FFD93D] border-2 border-[#1A1020] px-4 py-1.5 rotate-[-2deg] mb-6">
+                    <span className="font-sans text-xs font-800 uppercase tracking-widest text-[#1A1020]">YouTube Creative</span>
+                  </div>
+                  <div className="font-sans text-lg font-500 leading-relaxed text-[#C0A8E0] mb-8 space-y-6">
+                    <p>
+                      At Double D Management, I'm in charge of creative. I handle the creative for The Sinathrya's YouTube channel and the brand content on Darius Sinathrya and Donna Agnesia's social media channels.
+                    </p>
+                    <p>
+                      On YouTube, I'm responsible for creating content plans, along with guidelines and scripts for daily vlogs, culinary vlogs, and the NGODE podcast. I'm also involved in the filming process for each vlog and optimize and quality-check the content before publishing.
+                    </p>
+                    <p>
+                      For their social media channels, I'm involved in creating ideas/storylines for brand content, such as endorsements and brand ambassador content. I sometimes help create Reels for their respective branding personas.
+                    </p>
+                  </div>
+                </div>
+                <a href="https://www.youtube.com/@DariusDonna/featured" target="_blank" rel="noopener noreferrer" className="self-start flex items-center justify-center rounded-full border-4 border-[#1A1020] bg-[#FFD93D] px-8 py-4 cursor-pointer shadow-[4px_4px_0_0_#1A1020] hover:shadow-none hover:translate-x-[4px] hover:translate-y-[4px] transition-all duration-150">
                   <span className="font-sans text-lg font-800 text-[#1A1020]">Visit YouTube →</span>
                 </a>
               </div>
+              <div className="w-full lg:w-[45%] flex items-center justify-center">
+                <Swiper
+                  effect={'cards'}
+                  grabCursor={true}
+                  modules={[EffectCards, Autoplay]}
+                  autoplay={{ delay: 2500, disableOnInteraction: false }}
+                  className="w-full max-w-[380px] aspect-video"
+                >
+                  {DD_YOUTUBE.map((v) => (
+                    <SwiperSlide key={v.src} className="rounded-[20px] border-4 border-[#1A1020] bg-[#2A1A35] overflow-hidden">
+                      <div className="relative h-full w-full">
+                        <img src={v.src} alt={v.title} className="h-full w-full object-cover" loading="lazy" />
+                        <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-[#1A1020]/95 via-[#1A1020]/70 to-transparent p-4">
+                          <p className="font-sans text-xs font-700 text-white line-clamp-2">{v.title}</p>
+                        </div>
+                      </div>
+                    </SwiperSlide>
+                  ))}
+                </Swiper>
+              </div>
             </div>
-            
-            <div className="w-full lg:w-[40%] flex items-center justify-center relative z-10">
-              <Swiper
-                effect={'cards'}
-                grabCursor={true}
-                modules={[EffectCards, Autoplay]}
-                autoplay={{ delay: 2500, disableOnInteraction: false }}
-                className="w-full max-w-[320px] aspect-[4/5]"
-              >
-                {/* Placeholders for Double D Management images */}
-                <SwiperSlide className="rounded-[24px] border-4 border-[#1A1020] bg-[#2A1A35] flex items-center justify-center overflow-hidden">
-                  <span className="text-4xl text-white font-display font-bold">Image 1</span>
-                </SwiperSlide>
-                <SwiperSlide className="rounded-[24px] border-4 border-[#1A1020] bg-[#3D2F50] flex items-center justify-center overflow-hidden">
-                  <span className="text-4xl text-white font-display font-bold">Image 2</span>
-                </SwiperSlide>
-                <SwiperSlide className="rounded-[24px] border-4 border-[#1A1020] bg-[#5A4A6A] flex items-center justify-center overflow-hidden">
-                  <span className="text-4xl text-white font-display font-bold">Image 3</span>
-                </SwiperSlide>
-              </Swiper>
+
+            {/* Sub-block B — Social Media @ DD */}
+            <div className="z-10 flex flex-col lg:flex-row-reverse gap-10">
+              <div className="flex-1 flex flex-col justify-center">
+                <div className="inline-flex w-fit items-center rounded-full bg-[#FF3D8A] border-2 border-[#1A1020] px-4 py-1.5 rotate-[2deg] mb-6">
+                  <span className="font-sans text-xs font-800 uppercase tracking-widest text-white">Social Media @ DD</span>
+                </div>
+                <p className="font-sans text-lg font-500 text-[#C0A8E0] max-w-[600px]">
+                  I also edit several videos for Donna Agnesia's social media brands, such as "do skin official," "do style," "Omahan Kitchen" and "rendang warisan bundo."
+                </p>
+              </div>
+              <div className="w-full lg:w-[45%] flex items-center justify-center">
+                <Swiper
+                  effect={'cards'}
+                  grabCursor={true}
+                  modules={[EffectCards, Autoplay]}
+                  autoplay={{ delay: 2500, disableOnInteraction: false, reverseDirection: true }}
+                  className="w-full max-w-[280px] aspect-[9/16]"
+                >
+                  {DD_SOCIAL.map((s) => (
+                    <SwiperSlide key={s.src} className="rounded-[20px] border-4 border-[#1A1020] bg-[#2A1A35] overflow-hidden">
+                      <a href={s.href} target="_blank" rel="noopener noreferrer" className="block h-full w-full relative">
+                        <img src={s.src} alt={s.handle} className="h-full w-full object-cover" loading="lazy" />
+                        <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-[#1A1020]/95 via-[#1A1020]/70 to-transparent p-3">
+                          <span className="font-sans text-xs font-700 text-white">{s.handle}</span>
+                        </div>
+                      </a>
+                    </SwiperSlide>
+                  ))}
+                </Swiper>
+              </div>
             </div>
           </div>
         </motion.div>
@@ -145,12 +203,12 @@ export default function ProjectsPage () {
               </div>
               
               <div className="flex items-center justify-between mt-auto">
-                <a href="https://www.youtube.com/playlist?list=PLBBQMRL8TZK9_620PIKY1CRTFEKZ9QQUL" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center rounded-full border-4 border-[#1A1020] bg-[#A855F7] px-8 py-4 cursor-pointer shadow-[4px_4px_0_0_#1A1020] hover:shadow-none hover:translate-x-[4px] hover:translate-y-[4px] transition-all duration-150">
+                <a href={VDVC_KATA_USTAD_URL} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center rounded-full border-4 border-[#1A1020] bg-[#A855F7] px-8 py-4 cursor-pointer shadow-[4px_4px_0_0_#1A1020] hover:shadow-none hover:translate-x-[4px] hover:translate-y-[4px] transition-all duration-150">
                   <span className="font-sans text-lg font-800 text-white">View Playlist →</span>
                 </a>
               </div>
             </div>
-            
+
             <div className="w-full lg:w-[40%] flex items-center justify-center relative z-10">
               <Swiper
                 effect={'cards'}
@@ -159,13 +217,11 @@ export default function ProjectsPage () {
                 autoplay={{ delay: 2500, disableOnInteraction: false, reverseDirection: true }}
                 className="w-full max-w-[320px] aspect-[4/5]"
               >
-                {/* Placeholders for VDVC images */}
-                <SwiperSlide className="rounded-[24px] border-4 border-[#1A1020] bg-[#F5EDFF] flex items-center justify-center overflow-hidden">
-                  <span className="text-4xl text-[#1A1020] font-display font-bold">Image 1</span>
-                </SwiperSlide>
-                <SwiperSlide className="rounded-[24px] border-4 border-[#1A1020] bg-[#E9D5FF] flex items-center justify-center overflow-hidden">
-                  <span className="text-4xl text-[#1A1020] font-display font-bold">Image 2</span>
-                </SwiperSlide>
+                {VDVC_THUMBNAILS.map((t) => (
+                  <SwiperSlide key={t.src} className="rounded-[24px] border-4 border-[#1A1020] bg-[#F5EDFF] overflow-hidden">
+                    <img src={t.src} alt={t.alt} className="h-full w-full object-cover" loading="lazy" />
+                  </SwiperSlide>
+                ))}
               </Swiper>
             </div>
           </div>
@@ -211,8 +267,8 @@ export default function ProjectsPage () {
             </div>
             
             <div className="w-full lg:w-[40%] flex items-center justify-center relative z-10">
-              <div className="w-full aspect-[4/3] rounded-[24px] border-4 border-[#1A1020] bg-[#2A1A35] flex items-center justify-center overflow-hidden rotate-[2deg] hover:rotate-0 transition-transform duration-300">
-                <span className="text-4xl text-white font-display font-bold">Poster Placeholder</span>
+              <div className="w-full aspect-[4/3] rounded-[24px] border-4 border-[#1A1020] bg-[#2A1A35] overflow-hidden rotate-[2deg] hover:rotate-0 transition-transform duration-300">
+                <img src="/projects/goodscript/1.webp" alt="Dilema series poster" className="h-full w-full object-cover" loading="lazy" />
               </div>
             </div>
           </div>
@@ -250,8 +306,13 @@ export default function ProjectsPage () {
               </div>
               
               <div className="flex flex-col gap-4 mt-8 pt-8 border-t-4 border-dashed border-[#FFD93D]">
-                <div className="w-full aspect-video rounded-[16px] border-2 border-[#1A1020] bg-[#2A1A35] flex items-center justify-center overflow-hidden">
-                  <span className="text-xl text-white font-display font-bold">Video Placeholder</span>
+                <div className="grid grid-cols-2 gap-4">
+                  <a href="https://www.youtube.com/watch?v=VOUFt7D0Pn8" target="_blank" rel="noopener noreferrer" className="group/v block aspect-video rounded-[16px] border-2 border-[#1A1020] bg-[#2A1A35] shadow-[4px_4px_0_0_#1A1020] overflow-hidden transition-transform duration-150 hover:-translate-y-1 hover:translate-x-1 hover:shadow-none">
+                    <img src="/projects/lettrb/paljaya.png" alt="Paljaya video" className="h-full w-full object-cover" loading="lazy" />
+                  </a>
+                  <a href="https://www.youtube.com/watch?v=YK4wJHHuHyE" target="_blank" rel="noopener noreferrer" className="group/v block aspect-video rounded-[16px] border-2 border-[#1A1020] bg-[#2A1A35] shadow-[4px_4px_0_0_#1A1020] overflow-hidden transition-transform duration-150 hover:-translate-y-1 hover:translate-x-1 hover:shadow-none">
+                    <img src="/projects/lettrb/satria.png" alt="Satria Bela Negara video" className="h-full w-full object-cover" loading="lazy" />
+                  </a>
                 </div>
               </div>
             </div>
@@ -283,8 +344,8 @@ export default function ProjectsPage () {
               </div>
               
               <div className="flex flex-col gap-6 mt-8 pt-8 border-t-4 border-dashed border-[#A855F7]">
-                <div className="w-full aspect-[4/3] rounded-[16px] border-2 border-[#1A1020] bg-[#F5EDFF] flex items-center justify-center overflow-hidden">
-                  <span className="text-xl text-[#1A1020] font-display font-bold">Article Placeholder</span>
+                <div className="w-full aspect-[4/3] rounded-[16px] border-2 border-[#1A1020] bg-[#F5EDFF] overflow-hidden">
+                  <img src="/projects/meramuda/1.png" alt="Meramuda article preview" className="h-full w-full object-cover" loading="lazy" />
                 </div>
                 <a href="https://meramuda.com/news-entertainment/film-tv-news-entertainment/kata-kata-baru-dari-dunia-perfilman-yang-masuk-kamus-oxford/" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center rounded-full border-4 border-[#1A1020] bg-[#A855F7] px-6 py-3 cursor-pointer shadow-[4px_4px_0_0_#1A1020] hover:shadow-none hover:translate-x-[4px] hover:translate-y-[4px] transition-all duration-150">
                   <span className="font-sans text-base font-800 text-white">Read Article →</span>

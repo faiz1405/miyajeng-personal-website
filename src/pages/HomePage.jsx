@@ -1,6 +1,19 @@
 import PortfolioCtaLink from '../components/portfolio/PortfolioCtaLink.jsx'
 import PortfolioDarkCtaLink from '../components/portfolio/PortfolioDarkCtaLink.jsx'
 import { motion } from 'framer-motion'
+import { Swiper, SwiperSlide } from 'swiper/react'
+import { Autoplay, EffectCards } from 'swiper/modules'
+import 'swiper/css'
+import 'swiper/css/effect-cards'
+
+const DD_IMAGES = [
+  '/projects/dd/dd-1.png',
+  '/projects/dd/dd-2.png',
+  '/projects/dd/dd-3.png',
+  '/projects/dd/dd-4.jpg',
+  '/projects/dd/dd-5.jpg',
+  '/projects/dd/dd-6.jpg',
+]
 
 const fadeUp = {
   hidden: { opacity: 0, y: 40 },
@@ -177,8 +190,20 @@ export default function HomePage () {
                 </div>
                 <PortfolioDarkCtaLink to="/projects">Open Projects →</PortfolioDarkCtaLink>
               </div>
-              <div className="w-full md:w-[40%] aspect-square rounded-[20px] bg-[#2A1A35] border-2 border-[#1A1020] overflow-hidden">
-                <img src="/projects/dd-1.png" alt="Double D Management project preview" className="h-full w-full object-cover" loading="lazy" />
+              <div className="w-full md:w-[40%] flex items-center justify-center">
+                <Swiper
+                  effect={'cards'}
+                  grabCursor={true}
+                  modules={[EffectCards, Autoplay]}
+                  autoplay={{ delay: 2500, disableOnInteraction: false }}
+                  className="w-full max-w-[320px] aspect-square"
+                >
+                  {DD_IMAGES.map((src, i) => (
+                    <SwiperSlide key={src} className="rounded-[20px] border-2 border-[#1A1020] bg-[#2A1A35] overflow-hidden">
+                      <img src={src} alt={`Double D Management preview ${i + 1}`} className="h-full w-full object-cover" loading="lazy" />
+                    </SwiperSlide>
+                  ))}
+                </Swiper>
               </div>
             </div>
           </motion.div>
@@ -225,7 +250,7 @@ export default function HomePage () {
         <div className="absolute top-10 left-10 w-32 h-32 bg-[#FFD93D] rounded-full mix-blend-overlay blur-xl"></div>
         <div className="absolute bottom-10 right-10 w-40 h-40 bg-[#FF3D8A] rounded-full mix-blend-overlay blur-xl"></div>
 
-        <h2 className="relative z-10 font-display text-[64px] sm:text-[80px] font-bold leading-[0.9] text-white mb-8 drop-shadow-[4px_4px_0_rgba(26,16,32,1)]">
+        <h2 className="relative z-10 font-display text-[64px] sm:text-[80px] font-bold leading-[0.9] text-white mb-8 ">
           LET&apos;S BUILD <br /> YOUR NEXT STORY.
         </h2>
         <p className="relative z-10 font-sans text-2xl font-600 text-[#F5EDFF] mb-10 max-w-[680px]">
