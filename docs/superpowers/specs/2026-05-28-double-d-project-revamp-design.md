@@ -40,17 +40,22 @@ PROJECT 01 — DOUBLE D MANAGEMENT  (existing dark card chrome retained)
 │  ├─ 3 YouTube cards (thumbnail + title), grid
 │  └─ CTA: "Visit YouTube →" (existing button retained, moved here)
 │
-└─ SUB-BLOCK B — "Donna's Social Brands"                           (zig-zag: media LEFT, copy RIGHT)
+└─ SUB-BLOCK B — "Social Media @ DD"                               (zig-zag: media LEFT, copy RIGHT)
    ├─ Section label (chip)
-   ├─ Copy: existing paragraph 4 (Donna's social brand work)
-   ├─ 3 IG profile screenshots (vertical cards), grid
+   ├─ Copy: existing paragraph 3 (storylines for Reels/branding) + paragraph 4 (Donna's brand editing)
+   ├─ 6 IG profile screenshots (vertical cards), grid (3-col desktop, 2 rows)
    └─ Small handle chips below each screenshot, linking to the IG profile
 ```
 
 ## Layout & responsive
 
-- Desktop (`lg:` ≥ 1024px): sub-block A is `flex-row` (copy ~55%, media ~45%); sub-block B is `flex-row-reverse` (media left, copy right). Echoes the existing alternation pattern between Project 01 and Project 02 cards.
-- Tablet & mobile (< `lg`): each sub-block collapses to `flex-col` — copy stacked above media within A; copy stacked above media within B.
+- **Sub-block A** (3 YouTube thumbnails) — zig-zag horizontal:
+  - Desktop (`lg:` ≥ 1024px): `flex-row`, copy ~55% left / 3 YT cards in a row ~45% right.
+  - Tablet & mobile (< `lg`): collapses to `flex-col`, copy above media row. YT row stays 3-col on tablet, drops to single col on mobile.
+- **Sub-block B** (6 IG screenshots) — full-width stack:
+  - All breakpoints: section label + copy paragraph spans the full card width on top.
+  - Below the copy: IG grid. Desktop = 3 cols × 2 rows; tablet = 3 cols × 2 rows (narrower cards); mobile (< `md`) = 2 cols × 3 rows.
+  - Strict zig-zag is abandoned for B because 6 vertical screenshots need horizontal room — keeping them side-by-side with copy would crush both. The visual variety still reads as a distinct block because of the wide image grid contrasting with A's compact text-and-3-thumbs row.
 - Gap between sub-blocks: large enough to read as separate sections (suggested `gap-16` to `gap-20`).
 - The two sub-blocks share the same outer card; no additional shadow/border wrapping per sub-block (would feel nested).
 
@@ -78,13 +83,16 @@ const DD_YOUTUBE = [
 ]
 
 const DD_SOCIAL = [
-  { src: '/projects/dd/dd-4.jpg', handle: '@rendang.warisanbundo', href: 'https://www.instagram.com/rendang.warisanbundo/' },
-  { src: '/projects/dd/dd-5.jpg', handle: '@omahan.kitchen',       href: 'https://www.instagram.com/omahan.kitchen/' },
-  { src: '/projects/dd/dd-6.jpg', handle: '@do.style.official',    href: 'https://www.instagram.com/do.style.official/' },
+  { src: '/projects/dd/dd-4.jpg', handle: '@dariussinathrya',      href: 'https://www.instagram.com/dariussinathrya/' },
+  { src: '/projects/dd/dd-5.jpg', handle: '@donnaagnesia',         href: 'https://www.instagram.com/donnaagnesia/' },
+  { src: '/projects/dd/dd-6.jpg', handle: '@do.skin.official',     href: 'https://www.instagram.com/do.skin.official/' },
+  { src: '/projects/dd/dd-7.jpg', handle: '@do.style.official',    href: 'https://www.instagram.com/do.style.official/' },
+  { src: '/projects/dd/dd-8.jpg', handle: '@rendang.warisanbundo', href: 'https://www.instagram.com/rendang.warisanbundo/' },
+  { src: '/projects/dd/dd-9.jpg', handle: '@omahan.kitchen',       href: 'https://www.instagram.com/omahan.kitchen/' },
 ]
 ```
 
-`dd-1..3.png` = YouTube thumbnails. `dd-4..6.jpg` = IG profile screenshots. Files already exist in `public/projects/dd/` — no new assets needed. Titles and IG URLs above are placeholders sourced from the deck; user provides the final values.
+`dd-1..3.png` = YouTube thumbnails. `dd-4..9.jpg` = IG profile screenshots (2 personal accounts + 4 brand accounts). Files already exist in `public/projects/dd/` — no new assets needed. Handles and IG URLs above are placeholders inferred from the user's mapping; user confirms exact handles before merge.
 
 ## Copy allocation
 
@@ -103,14 +111,17 @@ Source: existing `ProjectsPage.jsx:71-83`.
 
 All assets already exist in `public/projects/dd/`. No new files needed.
 
-| Slot | File | Purpose |
+| Slot | File | Account |
 |------|------|---------|
-| Sub-block A, card 1 | `dd-1.png` | YouTube thumbnail |
-| Sub-block A, card 2 | `dd-2.png` | YouTube thumbnail |
-| Sub-block A, card 3 | `dd-3.png` | YouTube thumbnail |
-| Sub-block B, card 1 | `dd-4.jpg` | IG profile screenshot |
-| Sub-block B, card 2 | `dd-5.jpg` | IG profile screenshot |
-| Sub-block B, card 3 | `dd-6.jpg` | IG profile screenshot |
+| Sub-block A, card 1 | `dd-1.png` | YouTube — QnA episode |
+| Sub-block A, card 2 | `dd-2.png` | YouTube — NGODE podcast |
+| Sub-block A, card 3 | `dd-3.png` | YouTube — Nasi Uduk vlog |
+| Sub-block B, card 1 | `dd-4.jpg` | `@dariussinathrya` (personal) |
+| Sub-block B, card 2 | `dd-5.jpg` | `@donnaagnesia` (personal) |
+| Sub-block B, card 3 | `dd-6.jpg` | `@do.skin.official` (brand) |
+| Sub-block B, card 4 | `dd-7.jpg` | `@do.style.official` (brand) |
+| Sub-block B, card 5 | `dd-8.jpg` | `@rendang.warisanbundo` (brand) |
+| Sub-block B, card 6 | `dd-9.jpg` | `@omahan.kitchen` (brand) |
 
 ## What is removed
 
@@ -135,7 +146,7 @@ No automated test suite exists. Manual verification:
 5. Mobile (< 768px): vertical stacking, images full-width, copy readable.
 6. Hover Project 01 — outer accent overlay still appears.
 7. Scroll to VDVC (Project 02) — confirm Swiper still works, no regression.
-8. Check console: no 404s for `dd-1.png` through `dd-6.jpg`.
+8. Check console: no 404s for `dd-1..3.png` and `dd-4..9.jpg`.
 
 ## Out-of-scope follow-ups
 
